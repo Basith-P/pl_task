@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:my_news/l10n/l10n.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({
-    super.key,
-  });
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +27,10 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       TextFormField(
                         decoration:
+                            InputDecoration(labelText: context.l10n.name),
+                      ),
+                      TextFormField(
+                        decoration:
                             InputDecoration(labelText: context.l10n.email),
                       ),
                       TextFormField(
@@ -41,16 +43,16 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            FilledButton(onPressed: () {}, child: Text(context.l10n.login)),
+            FilledButton(onPressed: () {}, child: Text(context.l10n.signUp)),
             const SizedBox(height: 12),
             RichText(
               text: TextSpan(
-                text: context.l10n.newHere,
+                text: context.l10n.alreadyHaveAnAccount,
                 style: const TextStyle(color: Colors.black),
                 children: [
                   const TextSpan(text: ' '),
                   TextSpan(
-                    text: context.l10n.signUp,
+                    text: context.l10n.login,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],

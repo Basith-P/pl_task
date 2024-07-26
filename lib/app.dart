@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_news/features/auth/views/login_page.dart';
+import 'package:my_news/features/auth/views/signup_page.dart';
 import 'package:my_news/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -10,7 +10,7 @@ class App extends StatelessWidget {
     return const MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: LoginPage(),
+      home: SignupPage(),
     );
   }
 }
