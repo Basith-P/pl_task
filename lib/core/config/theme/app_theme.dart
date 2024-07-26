@@ -15,6 +15,12 @@ class AppTheme {
       letterSpacing: -0.3,
       height: 1.2,
     ),
+    titleSmall: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.bold,
+      letterSpacing: -0.3,
+      height: 1.2,
+    ),
     bodyLarge: TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.normal,
@@ -44,10 +50,17 @@ class AppTheme {
           backgroundColor: AppColors.surface,
           elevation: 0,
           titleTextStyle: TextStyle(
-            color: AppColors.primary,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
+        ),
+        cardTheme: const CardTheme(
+          color: Colors.white,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(12)),
+          ),
+          margin: EdgeInsets.zero,
         ),
         filledButtonTheme: FilledButtonThemeData(
           style: FilledButton.styleFrom(
