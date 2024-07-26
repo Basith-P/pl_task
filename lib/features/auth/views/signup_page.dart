@@ -1,11 +1,16 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_news/common/views/widgets/gaps.dart';
 import 'package:my_news/core/config/theme/ui_constants.dart';
+import 'package:my_news/features/auth/views/login_page.dart';
 import 'package:my_news/l10n/l10n.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
+
+  static const routeName = 'signup';
 
   @override
   State<SignupPage> createState() => _SignupPageState();
@@ -90,6 +95,8 @@ class _SignupPageState extends State<SignupPage> {
                 children: [
                   const TextSpan(text: ' '),
                   TextSpan(
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () => context.goNamed(LoginPage.routeName),
                     text: context.l10n.login,
                     style: textTheme.titleMedium!
                         .copyWith(color: colorScheme.primary),

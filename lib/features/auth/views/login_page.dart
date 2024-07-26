@@ -1,12 +1,18 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:my_news/common/views/widgets/gaps.dart';
 import 'package:my_news/core/config/theme/ui_constants.dart';
+import 'package:my_news/features/auth/views/signup_page.dart';
 import 'package:my_news/l10n/l10n.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
     super.key,
   });
+
+  static const routeName = 'login';
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -23,6 +29,9 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(context.l10n.appNameInAppBar),
@@ -43,6 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: context.l10n.email,
                         ),
                       ),
+                      gapH12,
                       ValueListenableBuilder(
                         valueListenable: _showPassword,
                         builder: (_, showPassword, __) {
@@ -72,16 +82,19 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             FilledButton(onPressed: () {}, child: Text(context.l10n.login)),
-            const SizedBox(height: 12),
+            gapH12,
             RichText(
               text: TextSpan(
                 text: context.l10n.newHere,
-                style: const TextStyle(color: Colors.black),
+                style: textTheme.bodyLarge,
                 children: [
                   const TextSpan(text: ' '),
                   TextSpan(
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () => context.goNamed(SignupPage.routeName),
                     text: context.l10n.signUp,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: textTheme.titleMedium!
+                        .copyWith(color: colorScheme.primary),
                   ),
                 ],
               ),
