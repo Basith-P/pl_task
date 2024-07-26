@@ -1,7 +1,12 @@
 {
-    "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+  "@@locale": "en",
+  "appNameInAppBar": "MyNews",
+  "name": "Name",
+  "email": "Email",
+  "password": "Password",
+  "login": "Login",
+  "signUp": "Sign Up",
+  "alreadyHaveAnAccount": "Already have an account?",
+  "newHere": "New here?",
+  "topHeadlines": "Top Headlines"
 }
