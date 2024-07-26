@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1024824459519",
+    "project_id": "my-news-pingo-learn",
+    "storage_bucket": "my-news-pingo-learn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024824459519:android:398fdd4bed199d78b88cca",
+        "android_client_info": {
+          "package_name": "com.basith.my_news.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACNbyHPxZfzCeqslnWLNnn0iH4HEDMSyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
