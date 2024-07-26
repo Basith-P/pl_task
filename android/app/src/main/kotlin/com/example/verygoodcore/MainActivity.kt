@@ -1,4 +1,4 @@
-package com.example.verygoodcore.my_news
+package com.basith.my_news
 
 import io.flutter.embedding.android.FlutterActivity
 

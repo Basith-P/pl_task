@@ -1,4 +1,7 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:my_news/common/views/widgets/gaps.dart';
+import 'package:my_news/core/config/theme/ui_constants.dart';
 import 'package:my_news/l10n/l10n.dart';
 
 class SignupPage extends StatefulWidget {
@@ -9,8 +12,19 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  late ValueNotifier<bool> _showPassword;
+
+  @override
+  void initState() {
+    super.initState();
+    _showPassword = ValueNotifier(false);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(context.l10n.appNameInAppBar),
@@ -26,17 +40,41 @@ class _SignupPageState extends State<SignupPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       TextFormField(
-                        decoration:
-                            InputDecoration(labelText: context.l10n.name),
+                        decoration: kTextFieldDecoration.copyWith(
+                          prefixIcon: const Icon(FluentIcons.person_24_regular),
+                          hintText: context.l10n.name,
+                        ),
                       ),
+                      gapH12,
                       TextFormField(
-                        decoration:
-                            InputDecoration(labelText: context.l10n.email),
+                        decoration: kTextFieldDecoration.copyWith(
+                          prefixIcon: const Icon(FluentIcons.mail_24_regular),
+                          hintText: context.l10n.email,
+                        ),
                       ),
-                      TextFormField(
-                        decoration:
-                            InputDecoration(labelText: context.l10n.password),
-                        obscureText: true,
+                      gapH12,
+                      ValueListenableBuilder(
+                        valueListenable: _showPassword,
+                        builder: (_, showPassword, __) {
+                          return TextFormField(
+                            decoration: kTextFieldDecoration.copyWith(
+                              prefixIcon: const Icon(
+                                FluentIcons.lock_closed_24_regular,
+                              ),
+                              hintText: context.l10n.password,
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  showPassword
+                                      ? FluentIcons.eye_off_24_regular
+                                      : FluentIcons.eye_24_regular,
+                                ),
+                                onPressed: () =>
+                                    _showPassword.value = !showPassword,
+                              ),
+                            ),
+                            obscureText: !showPassword,
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -44,23 +82,31 @@ class _SignupPageState extends State<SignupPage> {
               ),
             ),
             FilledButton(onPressed: () {}, child: Text(context.l10n.signUp)),
-            const SizedBox(height: 12),
+            gapH12,
             RichText(
               text: TextSpan(
                 text: context.l10n.alreadyHaveAnAccount,
-                style: const TextStyle(color: Colors.black),
+                style: textTheme.bodyLarge,
                 children: [
                   const TextSpan(text: ' '),
                   TextSpan(
                     text: context.l10n.login,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: textTheme.titleMedium!
+                        .copyWith(color: colorScheme.primary),
                   ),
                 ],
               ),
             ),
+            const SizedBox(height: 36),
           ],
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _showPassword.dispose();
+    super.dispose();
   }
 }

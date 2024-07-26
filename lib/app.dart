@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_news/core/config/theme/app_theme.dart';
 import 'package:my_news/features/auth/views/signup_page.dart';
 import 'package:my_news/l10n/l10n.dart';
 
@@ -7,10 +8,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: SignupPage(),
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.themeData(),
+      home: const SignupPage(),
     );
   }
 }
