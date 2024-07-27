@@ -1,7 +1,18 @@
 {
-    "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
-    }
+  "@@locale": "es",
+  "appNameInAppBar": "MyNews",
+  "name": "Nombre",
+  "email": "Correo Electrónico",
+  "password": "Contraseña",
+  "login": "Iniciar sesión",
+  "signUp": "Regístrate",
+  "alreadyHaveAnAccount": "¿Ya tienes una cuenta?",
+  "newHere": "¿Nuevo aquí?",
+  "topHeadlines": "Titulares Principales",
+  "nameIsRequired": "Se requiere el nombre",
+  "emailIsRequired": "Se requiere el correo electrónico",
+  "passwordIsRequired": "Se requiere contraseña",
+  "invalidEmail": "Correo electrónico no válido",
+  "passwordLength": "La contraseña debe tener al menos 6 caracteres",
+  "somethingWrong": "Algo salió mal"
 }
