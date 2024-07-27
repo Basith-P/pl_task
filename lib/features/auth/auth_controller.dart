@@ -24,6 +24,8 @@ class AuthController with ChangeNotifier {
         password: password,
       );
       router.go('/');
+    } on FirebaseAuthException catch (e) {
+      debugPrint('AUTH CONTRL: SIGN IN: $e');
     } catch (e) {
       debugPrint(e.toString());
     } finally {

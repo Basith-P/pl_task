@@ -1,11 +1,13 @@
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_news/common/views/widgets/gaps.dart';
-import 'package:my_news/core/config/theme/ui_constants.dart';
+import 'package:my_news/common/views/widgets/loader.dart';
+import 'package:my_news/features/auth/auth_controller.dart';
+import 'package:my_news/features/auth/views/login/widgets/login_form.dart';
 import 'package:my_news/features/auth/views/signup/signup_page.dart';
 import 'package:my_news/l10n/l10n.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -20,6 +22,10 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   late ValueNotifier<bool> _showPassword;
+  final _formKey = GlobalKey<FormState>();
+
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -27,10 +33,21 @@ class _LoginPageState extends State<LoginPage> {
     _showPassword = ValueNotifier(false);
   }
 
+  Future<void> submitForm() async {
+    if (_formKey.currentState!.validate()) {
+      await context.read<AuthController>().signIn(
+            _emailController.text,
+            _passwordController.text,
+          );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
+
+    final isLoading = context.watch<AuthController>().isLoading;
 
     return Scaffold(
       appBar: AppBar(
@@ -45,46 +62,18 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             Expanded(
               child: Center(
-                child: Form(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      TextFormField(
-                        decoration: kTextFieldDecoration.copyWith(
-                          prefixIcon: const Icon(FluentIcons.mail_24_regular),
-                          hintText: context.l10n.email,
-                        ),
-                      ),
-                      gapH12,
-                      ValueListenableBuilder(
-                        valueListenable: _showPassword,
-                        builder: (_, showPassword, __) {
-                          return TextFormField(
-                            decoration: kTextFieldDecoration.copyWith(
-                              prefixIcon: const Icon(
-                                FluentIcons.lock_closed_24_regular,
-                              ),
-                              hintText: context.l10n.password,
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  showPassword
-                                      ? FluentIcons.eye_off_24_regular
-                                      : FluentIcons.eye_24_regular,
-                                ),
-                                onPressed: () =>
-                                    _showPassword.value = !showPassword,
-                              ),
-                            ),
-                            obscureText: !showPassword,
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                child: LoginForm(
+                  formKey: _formKey,
+                  emailController: _emailController,
+                  passwordController: _passwordController,
+                  showPasswordNotifier: _showPassword,
                 ),
               ),
             ),
-            FilledButton(onPressed: () {}, child: Text(context.l10n.login)),
+            FilledButton(
+              onPressed: isLoading ? () {} : submitForm,
+              child: isLoading ? const Loader() : Text(context.l10n.login),
+            ),
             gapH12,
             RichText(
               text: TextSpan(
@@ -111,6 +100,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void dispose() {
+    _passwordController.dispose();
+    _emailController.dispose();
     _showPassword.dispose();
     super.dispose();
   }

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:my_news/common/views/widgets/gaps.dart';
 import 'package:my_news/common/views/widgets/loader.dart';
 import 'package:my_news/features/auth/auth_controller.dart';
-import 'package:my_news/features/auth/views/login_page.dart';
+import 'package:my_news/features/auth/views/login/login_page.dart';
 import 'package:my_news/features/auth/views/signup/widgets/signup_form.dart';
 import 'package:my_news/l10n/l10n.dart';
 import 'package:provider/provider.dart';
