@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
           TextButton.icon(
             onPressed: () {},
             label: Text(
-              'IN',
+              context.watch<NewsController>().countryCode.toUpperCase(),
               style: textTheme.titleSmall!.copyWith(color: AppColors.onPrimary),
             ),
             icon: Image.asset(

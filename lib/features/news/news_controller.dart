@@ -10,11 +10,19 @@ class NewsController with ChangeNotifier {
 
   final Dio _dio;
 
+  String _countryCode = 'in';
+
+  String get countryCode => _countryCode;
+  set countryCode(String value) {
+    _countryCode = value;
+    notifyListeners();
+  }
+
   Future<List<Article>> fetchTopHeadlines() async {
     try {
       final res = await _dio.get(
         Endpoints.topHeadlines,
-        queryParameters: {'country': 'in'},
+        queryParameters: {'country': _countryCode},
       );
 
       final articlesData = res.data['articles'] as List;
