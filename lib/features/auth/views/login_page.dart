@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_news/common/views/widgets/gaps.dart';
 import 'package:my_news/core/config/theme/ui_constants.dart';
-import 'package:my_news/features/auth/views/signup_page.dart';
+import 'package:my_news/features/auth/views/signup/signup_page.dart';
 import 'package:my_news/l10n/l10n.dart';
 
 class LoginPage extends StatefulWidget {
@@ -34,7 +34,10 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.l10n.appNameInAppBar),
+        title: Text(
+          context.l10n.appNameInAppBar,
+          style: textTheme.titleLarge!.copyWith(color: colorScheme.primary),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

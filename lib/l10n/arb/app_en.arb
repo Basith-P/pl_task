@@ -8,5 +8,11 @@
   "signUp": "Sign Up",
   "alreadyHaveAnAccount": "Already have an account?",
   "newHere": "New here?",
-  "topHeadlines": "Top Headlines"
+  "topHeadlines": "Top Headlines",
+  "nameIsRequired": "Name is required",
+  "emailIsRequired": "Email is required",
+  "passwordIsRequired": "Password is required",
+  "invalidEmail": "Invalid email",
+  "passwordLength": "Password must be at least 6 characters",
+  "somethingWrong": "Something went wrong"
 }

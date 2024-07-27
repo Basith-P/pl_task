@@ -9,6 +9,12 @@ class AppTheme {
   );
 
   static const _textTheme = TextTheme(
+    titleLarge: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      letterSpacing: -0.3,
+      height: 1.2,
+    ),
     titleMedium: TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.bold,
@@ -46,13 +52,10 @@ class AppTheme {
         colorScheme: _colorScheme,
         textTheme: _textTheme,
         scaffoldBackgroundColor: AppColors.surface,
-        appBarTheme: const AppBarTheme(
+        appBarTheme: AppBarTheme(
           backgroundColor: AppColors.surface,
           elevation: 0,
-          titleTextStyle: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          titleTextStyle: _textTheme.titleLarge,
         ),
         cardTheme: const CardTheme(
           color: Colors.white,
