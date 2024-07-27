@@ -1,6 +1,8 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:my_news/common/views/widgets/gaps.dart';
 import 'package:my_news/core/config/theme/app_colors.dart';
+import 'package:my_news/features/auth/auth_controller.dart';
 import 'package:my_news/features/news/models/article/article_model.dart';
 import 'package:my_news/features/news/news_controller.dart';
 import 'package:my_news/features/news/views/news_list/widgets/news_list_item.dart';
@@ -37,6 +39,11 @@ class _HomePageState extends State<HomePage> {
               height: 16,
               fit: BoxFit.contain,
             ),
+          ),
+          gapW4,
+          IconButton(
+            onPressed: context.read<AuthController>().signOut,
+            icon: const Icon(FluentIcons.sign_out_24_regular),
           ),
         ],
       ),

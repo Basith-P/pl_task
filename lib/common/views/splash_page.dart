@@ -13,7 +13,7 @@ class SplashPage extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       FirebaseAuth.instance.authStateChanges().listen((user) {
         if (user == null) {
-          context.go(LoginPage.routeName);
+          context.goNamed(LoginPage.routeName);
         } else {
           context.go('/');
         }
