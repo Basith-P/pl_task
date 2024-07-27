@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:my_news/common/views/widgets/gaps.dart';
+import 'package:my_news/core/config/theme/app_colors.dart';
 import 'package:my_news/features/news/models/article/article_model.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class NewsListItem extends StatelessWidget {
   const NewsListItem({
@@ -36,6 +38,16 @@ class NewsListItem extends StatelessWidget {
                     maxLines: 3,
                     softWrap: true,
                   ),
+                  gapH8,
+                  if (article.publishedAt != null)
+                    Text(
+                      timeago.format(DateTime.parse(article.publishedAt!)),
+                      style: const TextStyle(
+                        fontSize: 10,
+                        color: AppColors.textDimmed,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
                 ],
               ),
             ),
