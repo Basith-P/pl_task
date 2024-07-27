@@ -24,6 +24,21 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.onPrimary,
         title: Text(context.l10n.appNameInAppBar),
+        actions: [
+          TextButton.icon(
+            onPressed: () {},
+            label: Text(
+              'IN',
+              style: textTheme.titleSmall!.copyWith(color: AppColors.onPrimary),
+            ),
+            icon: Image.asset(
+              'assets/images/navigation_arrow.png',
+              width: 16,
+              height: 16,
+              fit: BoxFit.contain,
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16).copyWith(bottom: 0),
