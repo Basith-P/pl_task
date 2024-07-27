@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_news/core/config/app_router.dart';
 import 'package:my_news/core/config/theme/app_theme.dart';
+import 'package:my_news/core/global_keys.dart';
 import 'package:my_news/features/auth/auth_controller.dart';
 import 'package:my_news/l10n/l10n.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +27,7 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppTheme.themeData(),
         routerConfig: AppRouter.router,
+        scaffoldMessengerKey: scaffoldMessengerKey,
       ),
     );
   }

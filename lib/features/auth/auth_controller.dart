@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_news/core/utils/functions.dart';
 
 class AuthController with ChangeNotifier {
   AuthController({required this.router, required this.auth});
@@ -26,7 +27,9 @@ class AuthController with ChangeNotifier {
       router.go('/');
     } on FirebaseAuthException catch (e) {
       debugPrint('AUTH CONTRL: SIGN IN: $e');
+      showSnackBar(e.message!);
     } catch (e) {
+      showSnackBar('Something went wrong');
       debugPrint(e.toString());
     } finally {
       setLoading(false);
@@ -41,8 +44,12 @@ class AuthController with ChangeNotifier {
         password: password,
       );
       router.go('/');
+    } on FirebaseAuthException catch (e) {
+      debugPrint('AUTH CONTRL: SIGN UP: $e');
+      showSnackBar(e.message!);
     } catch (e) {
       debugPrint(e.toString());
+      showSnackBar('Something went wrong');
     } finally {
       setLoading(false);
     }

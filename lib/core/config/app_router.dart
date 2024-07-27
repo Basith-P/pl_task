@@ -8,7 +8,7 @@ class AppRouter {
   static GoRouter get router => _routerConfig;
 
   static final _routerConfig = GoRouter(
-    initialLocation: '/${SignupPage.routeName}',
+    initialLocation: '/${SplashPage.routeName}',
     routes: [
       GoRoute(
         name: SplashPage.routeName,
